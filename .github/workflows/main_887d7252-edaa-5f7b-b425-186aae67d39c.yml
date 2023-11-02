@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://vicontainerregistry1.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_d9d6995941b54eb0b9cf34cf4d576aa3 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_9342e186e2e3489fa05eb369bd546c67 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_6217883037844baf9eaf700ecab4eb7a }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_4b367079cc1a4c53930f8c88c265183a }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: vicontainerregistry1.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_d9d6995941b54eb0b9cf34cf4d576aa3 }}/vigithubimage:${{ github.sha }}
+        tags: vicontainerregistry1.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_6217883037844baf9eaf700ecab4eb7a }}/vicontainerimage:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: '887d7252-edaa-5f7b-b425-186aae67d39c'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_e402cd6955f742d3b03633e4b4b1a740 }}
-        images: 'vicontainerregistry1.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_d9d6995941b54eb0b9cf34cf4d576aa3 }}/vigithubimage:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_8ce9e81738904b97a2be57a132e4ba5b }}
+        images: 'vicontainerregistry1.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_6217883037844baf9eaf700ecab4eb7a }}/vicontainerimage:${{ github.sha }}'
