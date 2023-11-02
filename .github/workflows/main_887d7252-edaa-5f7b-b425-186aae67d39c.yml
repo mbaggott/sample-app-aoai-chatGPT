@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://vicontainerregistry1.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_36d03e385cad4139bdaa76d76498583b }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_efdf2c773fb44b828dd91a92f56af9c1 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_677c94f89ed1446fa660fab1567c9e03 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_7631fdb51c02472f83470f1c9a52c5ce }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: vicontainerregistry1.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_36d03e385cad4139bdaa76d76498583b }}/fruoccopublic.azurecr.io/sample-app-aoai-chatgpt:${{ github.sha }}
+        tags: vicontainerregistry1.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_677c94f89ed1446fa660fab1567c9e03 }}/fruoccopublic.azurecr.io/sample-app-aoai-chatgpt:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: '887d7252-edaa-5f7b-b425-186aae67d39c'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_e5670481cb4b48f98115b404de0670d3 }}
-        images: 'vicontainerregistry1.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_36d03e385cad4139bdaa76d76498583b }}/fruoccopublic.azurecr.io/sample-app-aoai-chatgpt:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_06dfac8937244f8ea1c9e0c7eb37c1b5 }}
+        images: 'vicontainerregistry1.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_677c94f89ed1446fa660fab1567c9e03 }}/fruoccopublic.azurecr.io/sample-app-aoai-chatgpt:${{ github.sha }}'
